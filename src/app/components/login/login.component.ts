@@ -21,13 +21,14 @@ export class LoginComponent implements OnInit {
   
   login(){
     this.authservice.adminLogin(this.loginForm.value)
-    if(!this.authservice.isUserLogged){
+    if(this.authservice.isUserLogged==false){
       this.userValidate=false
     }
   }
   ngOnInit() {
     this.authservice.getLoggedStatus().subscribe(status=>{
       this.loginstatus=status
+      console.log( this.loginstatus)
     })
   }
 

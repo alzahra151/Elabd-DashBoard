@@ -9,7 +9,7 @@
             <th scope="col">Price</th>
             <th scope="col">Amount</th>
             <th scope="col">Edit</th>
-            <th scope="col " class="d-none d-md-flex">Details</th>
+            <th scope="col " class="">Details</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
@@ -21,18 +21,59 @@
             <td>{{product.Price}}</td>
             <td class="quantity">{{product.Amount}} </td>
             <td>
-              <button class="btn btn-success ps-sm-1  pe-sm-1 ps-lg-3 pe-lg-3 pe-md-2 ps-md-2"><i
-                  class="bi bi-pen"></i></button>
+              <button data-toggle="modal" data-target="#form" class="btn btn-outline-success ps-sm-1  pe-sm-1 ps-lg-3 pe-lg-3 pe-md-2 ps-md-2"><i
+                  class="bi bi-pen" ></i></button>
             </td>
             <td class="d-none d-md-flex"><button
-                class="btn btn-primary ps-sm-1  pe-sm-1 ps-lg-3 pe-lg-3 pe-md-2 ps-md-2  "><i
-                  class="bi bi-ticket-detailed "></i></button></td>
-            <td><button class="btn btn-danger  ps-sm-1  pe-sm-1 ps-lg-3 pe-lg-3 pe-md-2 ps-md-2"><i
-                  class="bi bi-trash3"></i></button></td>
+                class="btn btn-outline-primary ps-sm-1  pe-sm-1 ps-lg-3 pe-lg-3 pe-md-2 ps-md-2  ">
+                <i class="bi bi-info-circle"></i>
+              </button></td>
+            <td><button class="btn btn-outline-danger  ps-sm-1  pe-sm-1 ps-lg-3 pe-lg-3 pe-md-2 ps-md-2">
+              <i class="bi bi-trash3"></i></button></td>
           </tr>
 
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+<!--edite modal  -->
+<div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="title">Product Title</label>
+            <input type="text" class="form-control" id="title" value="" >
+          </div>
+          <div class="form-group">
+            <label for="descrition">Product Description</label>
+            <input type="text" class="form-control" value="" id="descrition" >
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" value="">
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" class="form-control" id="amount" value="">
+          </div>
+          <!-- <div class="form-group">
+            <label for="price"></label>
+            <input type="number" class="form-control" id="price" value="">
+          </div> -->
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="submit" class="btn btn-success">Update Product</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

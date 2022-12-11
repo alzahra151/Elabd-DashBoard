@@ -1,5 +1,5 @@
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -11,31 +11,39 @@ import { User } from '../models/user';
 })
 export class AuthService {
 private isLogged:BehaviorSubject<Boolean>
-userInfo:User={}
+ userInfo:User={};
+ httpOptions;
 userValidate=true
   constructor(private httpClient:HttpClient ,private router:Router) { 
     this.isLogged=new BehaviorSubject<Boolean>(this.isUserLogged)
+   const Token =JSON.parse(localStorage.getItem('Token') || '{}')
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Token': `token ${Token}`
+      })
+    };
+  
   }
 adminLogin(user:User){
  this.httpClient.post<User>(`${environment.apiUrl}/User/Login`,user).subscribe(res=>{
-  console.log(res.AccessToken)
-  this.userInfo=res
   localStorage.setItem('Token',JSON.stringify(res.AccessToken))
-  this.isLogged.next(true)
+  localStorage.setItem('user',JSON.stringify(res))
+  this.userInfo=res
+  // this.isLogged.next(true)
   this.router.navigate(["/"]) 
  })
 }
-// logout(){
-//    this.httpClient.get(`${environment.apiUrl}/api/elabdfoods/User/Logout/:${userId}`).subscribe(res=>{
-
-//    })
-//    localStorage.removeItem('Token')
-// }
+logout(userId:Number|undefined):Observable<User>{
+ return   this.httpClient.get<User>(`${environment.apiUrl}/User/Logout/${userId}`,this.httpOptions)
+   
+}
 get  isUserLogged():Boolean{
     return (localStorage.getItem('Token'))?true:false
   }
 
 getLoggedStatus():Observable<Boolean>{
   return this.isLogged.asObservable()
-}  
+}
+
 }

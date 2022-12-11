@@ -17,6 +17,12 @@ import { LoginComponent } from './components/login/login.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { SettingProductComponent } from './components/setting-product/setting-product.component'
 import { RouterModule } from '@angular/router';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserStatusComponent } from './components/user-status/user-status.component';
+import { OrderComponent } from './components/order/order.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SideOffcanvasComponent } from './components/side-offcanvas/side-offcanvas.component';
+import { UpdateUserProfileComponent } from './components/update-user-profile/update-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,13 @@ import { RouterModule } from '@angular/router';
     AddProductComponent,
     LoginComponent,
     MainLayoutComponent,
-    SettingProductComponent
+    SettingProductComponent,
+    AddUserComponent,
+    UserStatusComponent,
+    OrderComponent,
+    UserProfileComponent,
+    SideOffcanvasComponent,
+    UpdateUserProfileComponent
   ],
   imports: [
     BrowserModule,
